@@ -87,3 +87,126 @@ background: var(--bg);
 .progress.is-animated {
   animation: spin 1s linear infinite;
 }
+.card.is-content-hidden .card_content {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.16s ease, visibility 0.16s ease;
+}
+.controls {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+  padding-bottom: 6px;
+}
+
+.field {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  align-items: center;
+  gap: 10px;
+}
+
+.field_label {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.input {
+  height: 34px;
+  padding: 0 12px;
+
+  border-radius: 999px;
+  border: 1px solid rgb(215, 225, 238);
+
+  font-size: 14px;
+  outline: none;
+}
+
+.input:focus {
+  border-color: rgb(148, 182, 255);
+  box-shadow: 0 0 0 3px rgba(29, 107, 255, 0.18);
+}
+
+.toggle {
+  display: inline-grid;
+  grid-template: 44px / max-content;
+  gap: 10px;
+  align-items: center;
+  user-select: none;
+}
+
+.toggle input {
+  grid-column: 1;
+  grid-row: 1;
+
+  width: 44px;
+  height: 24px;
+  margin: 0;
+
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+.toggle_ui {
+  grid-column: 1;
+  grid-row: 1;
+
+  width: 44px;
+  height: 24px;
+  border-radius: 999px;
+
+  background: rgb(219, 230, 244);
+  position: relative;
+
+  transition: background 140ms ease;
+  z-index: 1;
+}
+
+.toggle_ui::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.15);
+
+  transition: transform 140ms ease;
+}
+
+.toggle input:checked + .toggle_ui {
+  background: var(--ring-fg);
+}
+
+.toggle input:checked + .toggle_ui::after {
+  transform: translateX(20px);
+}
+
+.toggle_label {
+  grid-column: 2;
+  justify-self: start;
+
+  font-size: 14px;
+  color: var(--text);
+  cursor: pointer;
+}
+@media (orientation: landscape) {
+  .card {
+    width: 568px;
+    height: 320px;
+  }
+
+  .card__body {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 18px;
+  }
+  .controls {
+    padding-bottom: 0;
+  }
+}
