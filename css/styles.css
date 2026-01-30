@@ -1,0 +1,61 @@
+:root {
+  --bg: rgb(238, 243, 248);
+  --card-bg:rgb(255, 255, 255);
+  --text: rgb(15, 23, 41);
+  --mutted:rgb(100, 116, 139);
+
+  --ring-bg:rgb(238, 243, 248);
+  --ring-fg: rgb(29, 107, 255);
+
+  --size: 150px;
+  --thickness: 10px;
+  --radius: 16px;
+  --shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+
+}
+* {
+  box-sizing: border-box;
+}
+body{
+  margin: 0;
+  font-family: -apple-system;
+  "Helvitica Neue", Arial,
+background: var(--bg);
+  color: var(--text);
+}
+
+.page{
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+.card{
+  width: 320px;
+  height: 568px;
+  padding: 16px;
+
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.card__header{
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.card__title{
+  margin: 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+.card__body{
+  flex: 1;
+  display: grid;
+  place-items: center;
+  gap: 18px;
+}
