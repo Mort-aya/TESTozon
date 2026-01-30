@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Progress prototype</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+<main class="page">
+  <section class="card" progress>
+   <header class="card__header">
+     <h1 class="card__title">Progress</h1>
+   </header>
+
+<div class="card__body" progress-content>
+  <div class="progress__area">
+    <div class="progress" progress-ring>
+    </div>
+
+    <div class="controls" progress-controls>
+   <label class="field">
+     <span class="field__label"> Value
+     </span>
+
+     <input
+       class="input"
+       type="number"
+       min="0"
+       max="100"
+       step="1"
+       value="60"
+       control="value"
+       />
+   </label>
+      <div class="toggle">
+        <input id="animateToggle" type="checkbox" control="animate" />
+        <span class="toggle_ui" aria-hidden="true"></span>
+        <label class="toggle_label" for="animateToggle">Animate</label>
+      </div>
+
+      <div class="toggle">
+        <input id="hideToggle" type="checkbox" control="hide" />
+        <span class="toggle_ui" aria-hidden="true"></span>
+        <label class="toggle_label" for="hideToggle">Hide</label>
+
+    </div>
+  </div>
+</div>
+
+
+  </section>
+</main>
+
+<script src="js/app.js"></script>
+</body>
+</html>
