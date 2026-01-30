@@ -2,11 +2,11 @@ class ProgressBlock {
   constructor(root) {
     this.root = root;
 
-    this.ring = root.querySelector("[progressed-ring]");
+    this.ring = root.querySelector("[progress-ring]");
     this.valueInput = root.querySelector('[control="value"]');
     this.animateToggle = root.querySelector('[control="animate"]');
     this.hideToggle = root.querySelector('[control="hide"]');
-
+    this.returnBtn = root.querySelector('[control="return"]');
     this.currentValue = 0;
     this.rafId = null;
 
@@ -52,6 +52,15 @@ class ProgressBlock {
 
     this.rafId = requestAnimationFrame(step);
   }
+
+  setValue(value) {
+    const normalized = this.normal(value);
+
+    this.valueInput.value = normalized;
+
+    this.animateValueTo(normalized);
+  }
+
 // скрытие через сиэсэс//
   setHidden(isHidden) {
     this.root.classList.toggle("is-content-hidden", isHidden);
@@ -64,6 +73,26 @@ class ProgressBlock {
     this.ring.classList.toggle("is-animated", this.animateToggle.checked);
 
     this.setHidden(this.hideToggle.checked);
+    this.valueInput.addEventListener("input", () => {
+      this.setValue(this.valueInput.value);
+    });
 
+    this.animateToggle.addEventListener("change", () => {
+      this.ring.classList.toggle("is-animated", this.animateToggle.checked);
+    });
+
+    this.hideToggle.addEventListener("change", () => {
+      this.setHidden(this.hideToggle.checked);
+    });
+
+    this.returnBtn.addEventListener("click", () => {
+      this.hideToggle.checked = false;
+      this.setHidden(false);
+    });
   }
 }
+
+//ini
+document.querySelectorAll("[progress]").forEach((el) => {
+  new ProgressBlock(el);
+});

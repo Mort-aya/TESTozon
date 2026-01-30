@@ -2,7 +2,7 @@
   --bg: rgb(238, 243, 248);
   --card-bg:rgb(255, 255, 255);
   --text: rgb(15, 23, 41);
-  --mutted:rgb(100, 116, 139);
+  --muted:rgb(100, 116, 139);
 
   --ring-bg:rgb(238, 243, 248);
   --ring-fg: rgb(29, 107, 255);
@@ -18,9 +18,8 @@
 }
 body{
   margin: 0;
-  font-family: -apple-system, sans-serif;
-  "Helvitica Neue", Arial,
-background: var(--bg);
+  font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg);
   color: var(--text);
 }
 
@@ -59,7 +58,7 @@ background: var(--bg);
   place-items: center;
   gap: 18px;
 }
-.progress-area {
+.progress__area {
   display: grid;
   place-items: center;
 }
@@ -87,12 +86,21 @@ background: var(--bg);
 .progress.is-animated {
   animation: spin 1s linear infinite;
 }
-.card.is-content-hidden .card_content {
+.card.is-content-hidden .card__body {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transition: opacity 0.16s ease, visibility 0.16s ease;
 }
+
+.return-btn {
+  display: none;
+}
+
+.card.is-content-hidden .return-btn {
+  display: inline-flex;
+}
+
 .controls {
   display: grid;
   gap: 14px;
@@ -107,9 +115,9 @@ background: var(--bg);
   gap: 10px;
 }
 
-.field_label {
+.field__label {
   font-size: 14px;
-  color: var(--mutted);
+  color: var(--muted);
 }
 
 .input {
@@ -195,6 +203,41 @@ background: var(--bg);
   color: var(--text);
   cursor: pointer;
 }
+
+/* кнопка Return */
+.return-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+
+  height: 34px;
+  padding: 0 16px;
+
+  border-radius: 999px;
+  border: 1px solid rgb(215, 225, 238);
+  background: var(--card-bg);
+  color: var(--text);
+
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+
+  transition: background 0.14s ease, border-color 0.14s ease,
+  transform 0.14s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.return-btn:hover {
+  background: rgb(248, 250, 252);
+  border-color: rgb(148, 182, 255);
+}
+
+.return-btn:active {
+  transform: translateY(1px);
+}
+
 @media (orientation: landscape) {
   .card {
     width: 568px;
@@ -208,5 +251,10 @@ background: var(--bg);
   }
   .controls {
     padding-bottom: 0;
+  }
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
 }
