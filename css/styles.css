@@ -59,3 +59,31 @@ background: var(--bg);
   place-items: center;
   gap: 18px;
 }
+.progress-area {
+  display: grid;
+  place-items: center;
+}
+
+.progress {
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+
+  background: conic-gradient(var(--ring-fg) 60%, var(--ring-bg) 0);
+
+  transition: background 0.2s linear;
+}
+
+.progress::before {
+  content: "";
+  width: calc(var(--size) - var(--thickness) * 2);
+  height: calc(var(--size) - var(--thickness) * 2);
+  border-radius: 999px;
+  background: var(--card-bg);
+}
+
+.progress.is-animated {
+  animation: spin 1s linear infinite;
+}
