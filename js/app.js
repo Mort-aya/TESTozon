@@ -51,3 +51,26 @@ class ProgresBlock {
 
     this.rafId = requestAnimationFrame(step);
   }
+
+  setValue(value) {
+    const normal = this.normal(value);
+
+    this.valueInput.value = normal;
+
+    this.animateValueTo(normal)
+  }
+// скрытие через сиэсэс//
+  setHidden(isHidden) {
+    this.root.classList.toggle("is-hidden", isHidden);
+  }
+
+  setup() {
+    this.currentValue = this.normalize(this.valueInput.value);
+    this.drawRing(this.currentValue);
+
+    this.ring.classList.toggle("is-animated", this.animateToggle.checked);
+
+    this.setHidden(this.hideToggle.checked);
+
+  }
+}
