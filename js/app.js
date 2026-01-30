@@ -1,10 +1,11 @@
-class ProgresBlock {
-  cobnstructor(root) {
+class ProgressBlock {
+  constructor(root) {
     this.root = root;
 
-    this.ring = root.querySelector("[progressed-ring]")
+    this.ring = root.querySelector("[progressed-ring]");
     this.valueInput = root.querySelector('[control="value"]');
     this.animateToggle = root.querySelector('[control="animate"]');
+    this.hideToggle = root.querySelector('[control="hide"]');
 
     this.currentValue = 0;
     this.rafId = null;
@@ -51,21 +52,13 @@ class ProgresBlock {
 
     this.rafId = requestAnimationFrame(step);
   }
-
-  setValue(value) {
-    const normal = this.normal(value);
-
-    this.valueInput.value = normal;
-
-    this.animateValueTo(normal)
-  }
 // скрытие через сиэсэс//
   setHidden(isHidden) {
-    this.root.classList.toggle("is-hidden", isHidden);
+    this.root.classList.toggle("is-content-hidden", isHidden);
   }
 
   setup() {
-    this.currentValue = this.normalize(this.valueInput.value);
+    this.currentValue = this.normal(this.valueInput.value);
     this.drawRing(this.currentValue);
 
     this.ring.classList.toggle("is-animated", this.animateToggle.checked);

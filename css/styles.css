@@ -18,7 +18,7 @@
 }
 body{
   margin: 0;
-  font-family: -apple-system;
+  font-family: -apple-system, sans-serif;
   "Helvitica Neue", Arial,
 background: var(--bg);
   color: var(--text);
@@ -109,7 +109,7 @@ background: var(--bg);
 
 .field_label {
   font-size: 14px;
-  color: var(--muted);
+  color: var(--mutted);
 }
 
 .input {
